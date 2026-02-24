@@ -5,6 +5,8 @@ import { Login } from "./pages/Login/Login";
 import { Dashboard } from "./pages/Dashboard/Dashboard";
 import { NewTicket } from "./pages/NewTicket/NewTicket";
 import { Navbar } from "./components/Navbar/Navbar";
+import { MainLayout } from "./components/MainLayout/MainLayout";
+import { TicketDetail } from "./features/tickets/components/TicketDetail";
 
 const NotFound = () => <h2>Error 404: Aquí no hay nada</h2>;
 
@@ -18,12 +20,13 @@ function App() {
         {/*Rutas Protegidas */}
         <Route element={
           <ProtectedRoute>
-            <Navbar/>
+            <MainLayout/>
           </ProtectedRoute>
         }>
 
-          <Route path="/dashboard" element={<Dashboard />}/>
-          <Route path="/ticket/nuevo" element={<NewTicket/>}/>
+          <Route path="dashboard" element={<Dashboard />}/>
+          <Route path="ticket/nuevo" element={<NewTicket/>}/>
+          <Route path="ticket/detalle/:id" element={<TicketDetail/>} />
         </Route>
         
 

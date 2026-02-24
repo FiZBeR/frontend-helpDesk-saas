@@ -13,80 +13,81 @@ export const Navbar = () => {
 
   return (
     <aside
-        class="flex w-64 flex-col border-r border-slate-200 dark:border-[#232948] bg-white dark:bg-[#111422] transition-all duration-300"
+        className="flex w-64 flex-col border-r border-slate-200 dark:border-[#232948] bg-white dark:bg-[#111422] transition-all duration-300"
       >
         <div
-          class="flex h-16 items-center justify-start gap-3 border-b border-slate-200 dark:border-[#232948] px-6"
+          className="flex h-16 items-center justify-start gap-3 border-b border-slate-200 dark:border-[#232948] px-6"
         >
           <div
-            class="flex items-center justify-center rounded-lg bg-primary p-1.5"
+            className="flex items-center justify-center rounded-lg bg-primary p-1.5"
           >
-            <span class="material-symbols-outlined text-white text-[20px]"
+            <span className="material-symbols-outlined text-white text-[20px]"
               >dns</span
             >
           </div>
           <h1
-            class="text-lg font-bold tracking-tight text-slate-900 dark:text-white"
+            className="text-lg font-bold tracking-tight text-slate-900 dark:text-white"
           >
             AdminPanel
           </h1>
         </div>
-        <nav class="flex-1 overflow-y-auto px-3 py-4 space-y-1">
+        <nav className="flex-1 overflow-y-auto px-3 py-4 space-y-1">
           <Link
-            class="group flex items-center gap-3 rounded-lg bg-primary/10 px-3 py-2 text-primary dark:text-white dark:bg-[#232948]"
+            className="group flex items-center gap-3 rounded-lg bg-primary/10 px-3 py-2 text-primary dark:text-white dark:bg-[#232948]"
             to="/dashboard"
           >
             <span
-              class="material-symbols-outlined text-primary dark:text-primary-light"
+              className="material-symbols-outlined text-primary dark:text-primary-light"
               >dashboard</span
             >
-            <span class="text-sm font-medium">Dashboard</span>
+            <span className="text-sm font-medium">Dashboard</span>
           </Link>
           <Link
-            class="group flex items-center gap-3 rounded-lg px-3 py-2 text-slate-500 hover:bg-slate-100 hover:text-slate-900 dark:text-[#929bc9] dark:hover:bg-[#232948] dark:hover:text-white transition-colors"
+            className="group flex items-center gap-3 rounded-lg px-3 py-2 text-slate-500 hover:bg-slate-100 hover:text-slate-900 dark:text-[#929bc9] dark:hover:bg-[#232948] dark:hover:text-white transition-colors"
             to="/equipos"
           >
             <span
-              class="material-symbols-outlined group-hover:text-slate-900 dark:group-hover:text-white"
+              className="material-symbols-outlined group-hover:text-slate-900 dark:group-hover:text-white"
               >computer</span
             >
-            <span class="text-sm font-medium">Equipos</span>
+            <span className="text-sm font-medium">Equipos</span>
           </Link>
           <Link
-            class="group flex items-center gap-3 rounded-lg px-3 py-2 text-slate-500 hover:bg-slate-100 hover:text-slate-900 dark:text-[#929bc9] dark:hover:bg-[#232948] dark:hover:text-white transition-colors"
+            className="group flex items-center gap-3 rounded-lg px-3 py-2 text-slate-500 hover:bg-slate-100 hover:text-slate-900 dark:text-[#929bc9] dark:hover:bg-[#232948] dark:hover:text-white transition-colors"
             to="/tickets"
           >
             <span
-              class="material-symbols-outlined group-hover:text-slate-900 dark:group-hover:text-white"
+              className="material-symbols-outlined group-hover:text-slate-900 dark:group-hover:text-white"
               >question_exchange</span
             >
-            <span class="text-sm font-medium">Tickets</span>
+            <span className="text-sm font-medium">Tickets</span>
             <span
-              class="ml-auto rounded-full bg-danger/20 px-2 py-0.5 text-xs font-semibold text-danger"
+              className="ml-auto rounded-full bg-danger/20 px-2 py-0.5 text-xs font-semibold text-danger"
               >3</span
             >
           </Link>
           <Link
-            class="group flex items-center gap-3 rounded-lg px-3 py-2 text-slate-500 hover:bg-slate-100 hover:text-slate-900 dark:text-[#929bc9] dark:hover:bg-[#232948] dark:hover:text-white transition-colors"
+            className="group flex items-center gap-3 rounded-lg px-3 py-2 text-slate-500 hover:bg-slate-100 hover:text-slate-900 dark:text-[#929bc9] dark:hover:bg-[#232948] dark:hover:text-white transition-colors"
             to="/usuarios"
           >
             <span
-              class="material-symbols-outlined group-hover:text-slate-900 dark:group-hover:text-white"
+              className="material-symbols-outlined group-hover:text-slate-900 dark:group-hover:text-white"
               >account_circle</span
             >
-            <span class="text-sm font-medium">Usuarios</span>
+            <span className="text-sm font-medium">Usuarios</span>
           </Link>
           
         </nav>
-        <div class="border-t border-slate-200 dark:border-[#232948] p-4">
-          <div
-            class="flex items-center gap-3 rounded-lg p-2 hover:bg-slate-100 dark:hover:bg-[#232948] cursor-pointer transition-colors"
+        <div className="border-t border-slate-200 dark:border-[#232948] p-4">
+          <Link
+            className="flex items-center gap-3 rounded-lg p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-[#232948] hover:text-white cursor-pointer transition-colors" onClick={() =>(loguot())}
           >
+            <span className="text-sm font-medium">Cerrar Sesion</span>
             <span
-              class="material-symbols-outlined ml-auto text-slate-400 dark:text-[#929bc9]" onClick={logout}
+              className="material-symbols-outlined ml-auto text-slate-400 dark:text-[#929bc9]" onClick={logout}
               >logout</span
             >
-          </div>
+          </Link>
         </div>
       </aside>
   )

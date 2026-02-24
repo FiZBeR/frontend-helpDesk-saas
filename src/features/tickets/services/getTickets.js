@@ -9,3 +9,8 @@ export const createTicket = async (ticketData) => {
     const response = await api.post('/tickets/', ticketData);
     return response.data;
 }
+
+export const detailTicket = async (id) => {
+    const response = await api.get(`/tickets/${id}`)
+    return response.data
+}
