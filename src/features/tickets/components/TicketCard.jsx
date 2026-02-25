@@ -56,6 +56,7 @@ export const TicketCard = ({ticket}) => {
         <Link to={`/ticket/detalle/${ticket.id}`} className="flex items-center gap-2 px-3 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg shadow-lg shadow-blue-600/20 whitespace-nowrap" >
         <span className="material-symbols-outlined text-lg">
           details
+          
         </span>
           <span className="text-xs text-white font-semibold">Detalle</span>
         </Link>
