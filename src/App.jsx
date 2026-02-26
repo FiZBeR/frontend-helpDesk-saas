@@ -7,6 +7,9 @@ import { NewTicket } from "./pages/NewTicket/NewTicket";
 import { Navbar } from "./components/Navbar/Navbar";
 import { MainLayout } from "./components/MainLayout/MainLayout";
 import { TicketDetail } from "./features/tickets/components/TicketDetail";
+import { EquipoList } from "./features/equipos/components/EquipoList";
+import { PageNewEquipo } from "./pages/NewEquipo/PageNewEquipo";
+import { ViewTickets } from "./pages/ViewTickets/ViewTickets";
 
 const NotFound = () => <h2>Error 404: Aquí no hay nada</h2>;
 
@@ -25,8 +28,11 @@ function App() {
         }>
 
           <Route path="dashboard" element={<Dashboard />}/>
+          <Route path="ticket" element={<ViewTickets />}/>
           <Route path="ticket/nuevo" element={<NewTicket/>}/>
           <Route path="ticket/detalle/:id" element={<TicketDetail/>} />
+          <Route path="equipos" element={<EquipoList/>}/>
+          <Route path="equipos/nuevo" element={<PageNewEquipo/>}/>
         </Route>
         
 

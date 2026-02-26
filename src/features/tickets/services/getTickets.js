@@ -19,3 +19,8 @@ export const comentByTicket = async (id) => {
     const response = await api.get(`/tickets/${id}/comentarios/`);
     return response.data
 }
+
+export const resolverTicket = async (id) => {
+    const response = await api.post(`/tickets/${id}/resolver_ticket/`);
+    return response.data
+}

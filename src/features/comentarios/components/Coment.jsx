@@ -1,6 +1,7 @@
 import React from "react";
 
 export const Coment = ({coment}) => {
+  console.log("Comentario: ", coment);
   return (
     <div className="relative">
       <span className="absolute left-0 top-1 -ml-5.75 sm:-ml-10-75 flex h-12 w-12 items-center justify-center rounded-full border-4 border-[#101322] bg-[#232948] shadow-sm">
@@ -12,14 +13,16 @@ export const Coment = ({coment}) => {
         <div className="flex justify-between items-start">
           <div className="flex items-center gap-3">
             <div
-              className="h-8 w-8 rounded-full bg-cover bg-center"
-              data-alt="John Doe Avatar"
-            ></div>
+              className="h-8 w-8 pl-[10px] pt-[5px] rounded-full bg-cover bg-center"
+            >
+              <span className="material-symbols-outlined text-white text-xl">
+                account_circle
+              </span>
+            </div>
             <div>
               <p className="text-sm font-semibold text-white">
-                {coment.autor.username}
-                <span className="text-[#929bc9] font-normal">
-                  {coment.autor.rol}
+                {coment.autor.username} - <span className="text-[#929bc9] font-normal">
+                   {" " + coment.autor.rol}
                 </span>
               </p>
               <p className="text-xs text-[#929bc9]">{coment.fecha}</p>

@@ -18,8 +18,7 @@ export const CreateTicketForm = () => {
         titulo,
         descripcion,
         prioridad,
-        estado,
-        equipo,
+        equipo: parseInt(equipo, 10),
       };
 
       console.log("Ticket Data: ", ticketData);
@@ -163,45 +162,6 @@ export const CreateTicketForm = () => {
                     expand_more
                   </span>
                 </span>
-              </div>
-            </div>
-            {/*<!-- Estado -->*/}
-            <div className="flex flex-col sm:flex-row gap-5">
-              <div className="flex-1 flex flex-col gap-2">
-                <label
-                  className="text-sm font-medium text-gray-700 dark:text-white"
-                  for="estado"
-                >
-                  Estado
-                </label>
-                <div className="relative">
-                  <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400 dark:text-[#929bc9]">
-                    <span className="material-symbols-outlined text-[20px]">
-                      frame_exclamation
-                    </span>
-                  </span>
-                  <select
-                    className="w-full h-12 pl-10 pr-10 rounded-lg bg-gray-50 dark:bg-[#111422] border border-gray-200 dark:border-[#323b67] text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all text-sm appearance-none cursor-pointer"
-                    id="estado"
-                    name="estado"
-                    value={estado}
-                    onChange={(e) => {
-                      setEstado(e.target.value);
-                    }}
-                  >s
-                    <option value='abierto'>
-                      Selecciona un estado al ticket
-                    </option>
-                    <option value="abierto">Abierto</option>
-                    <option value="en_progreso">En Progreso</option>
-                    <option value="cerrado">Cerrado</option>
-                  </select>
-                  <span className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-gray-400 dark:text-[#929bc9]">
-                    <span className="material-symbols-outlined text-[20px]">
-                      expand_more
-                    </span>
-                  </span>
-                </div>
               </div>
             </div>
             {/* Equipo */}

@@ -1,21 +1,21 @@
 import { useState, useContext } from "react";
 import { replace, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
-import "./Login.css"
 
 export const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [errorMsg, setErrorMsg] = useState(null);
+  const [errorMsg, setErrorMsg] = useState("");
+  const [isLoading, setIsLoading] = useState("");
 
   const navigate = useNavigate();
   const { login } = useContext(AuthContext);
 
   const handleSubmit = async (e) => {
+    e.preventDefault();
+    setErrorMsg("");
+    setIsLoading(true);
     try {
-      e.preventDefault();
-      setErrorMsg("");
-
       const success = await login(username, password);
 
       if (success) {
@@ -27,6 +27,8 @@ export const Login = () => {
       }
     } catch (error) {
       console.log(error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -35,8 +37,8 @@ export const Login = () => {
   };
 
   return (
-    <section className="main">
-      <div className="relative w-full max-w-120 px-4">
+    <section className="flex items-center justify-center h-screen w-full bg-gray-50 dark:bg-gray-900 overflow-hidden">
+      <div className=" relative w-full max-w-120 px-4">
         {/*Login Card */}
         <div className="w-full flex flex-col rounded-xl bg-[#191e33]/90 backdrop-blur-sm border border-[#323b67] shadow-2xl p-8 sm:p-10">
           {/* Header / Logo Area*/}
@@ -119,10 +121,21 @@ export const Login = () => {
             </div>
             {/* Submit Button */}
             <button
-              className="mt-2 flex w-full items-center justify-center rounded-lg bg-primary py-3.5 text-base font-semibold text-white shadow-lg shadow-primary/25 hover:bg-[#3b5bf6] active:scale-[0.98] transition-all duration-200"
-              type="submit"
+              disabled={isLoading}
+              className="relative flex items-center justify-center w-full h-12 px-6 rounded-lg bg-blue-600 text-white font-bold transition-all disabled:opacity-70 disabled:cursor-not-allowed overflow-hidden"
             >
-              Login
+              {/* Condicionamos lo que se muestra dentro del botón */}
+              {isLoading ? (
+                <span className="flex items-center gap-2">
+                  {/* Icono rotando con Tailwind */}
+                  <span className="material-symbols-outlined animate-spin text-[20px]">
+                    progress_activity
+                  </span>
+                  Autenticando...
+                </span>
+              ) : (
+                <span>Iniciar Sesión</span>
+              )}
             </button>
           </form>
           {/* Footer Link */}

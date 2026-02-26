@@ -4,12 +4,27 @@ import { useFetchIDComent } from "../../../hooks/useFetchIDComent";
 import { Coment } from "../../comentarios/components/Coment";
 import { HeaderComent } from "../../comentarios/components/HeaderComent";
 import { FormComent } from "../../comentarios/components/FormComent";
+import { MetaDataComent } from "../../comentarios/components/MetaDataComent";
+import { useEffect, useState } from "react";
 
 export const TicketDetail = () => {
   const { id } = useParams();
   const { data, isLoading, error } = useFetchID(id);
   const { dataComent, isLoadingComent, errorComent } = useFetchIDComent(id);
-  console.log(data + "and coments: ", dataComent);
+
+  const [comentarios, setComentarios] = useState([]);
+
+  useEffect(() => {
+    if (dataComent) {
+      console.log("Comentarios: ", dataComent)
+      setComentarios(dataComent);
+    }
+  }, [dataComent]);
+  
+  const agregarComentarioUI = (nuevoComentario) => {
+    // Inyectamos el nuevo comentario en la primera posición del arreglo
+    setComentarios(prevComentarios => [{texto: nuevoComentario.texto, autor: {id: 10, username: 'Tecnico', rol: 'tecnico'}}, ...prevComentarios]);
+  };
 
   if (isLoading) {
     return (
@@ -41,17 +56,18 @@ export const TicketDetail = () => {
             {/*  Timeline Container */}
             <div className="relative pl-6 sm:pl-10 space-y-8 py-8 px-8 mx-6 before:absolute before:inset-0 before:ml-4.75 sm:before:ml-9.75 before:h-full before:w-0.5 before:-translate-x-1/2 before:bg-[#232948] before:content-['']">
               {/*  Initial Request (Start) */}
-              {dataComent?.map((coment) => (
+              {comentarios?.map((coment) => (
                 <Coment coment={coment} key={coment.id}/>
               ))}
             </div>
           </div>
-          <FormComent ticket={id}/>
+          <FormComent idTicket={id} onComentarioCreado={agregarComentarioUI}/>
         </div>
       </div>
       {/* Columna Derecha: Metadata (Adaptar código de Stitch) */}
       <aside className="hidden xl:flex w-80 flex-col border-l border-[#232948] bg-[#111422] p-6 gap-6 overflow-y-auto">
         {/* Aquí mapeas la prioridad, equipo y fechas reales de tu 'ticket' */}
+        <MetaDataComent data={data}/>
       </aside>
     </div>
   );
